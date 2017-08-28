@@ -22,6 +22,8 @@ var edge=window.innerWidth-50;
 var i=1;
 function animate()
 {
+	//to make circle move instead of drawing multiple circle on canvas use clearRect
+	//c.clearRect(0,0,window.innerWidth,window.innerHeight);
 	if(y==window.innerHeight-50){
 		alert("done");
 	}
