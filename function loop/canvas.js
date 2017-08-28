@@ -16,15 +16,16 @@ var c=canvas.getContext('2d');
 //##################################
 //animate
 //creating loop
-var x=50;
+var x=30;
 var y=50;
-var edge=window.innerWidth-50;
+var edge=window.innerWidth;
 var i=1;
+var dx=20;
 function animate()
 {
 	//to make circle move instead of drawing multiple circle on canvas use clearRect
 	//c.clearRect(0,0,window.innerWidth,window.innerHeight);
-	if(y==window.innerHeight-50){
+	if(y>=window.innerHeight){
 		alert("done");
 	}
 	else
@@ -35,19 +36,14 @@ function animate()
 		c.strokeStyle="green";
 		c.stroke();
 
-		if(i%2==0)
-			x-=3;
-		else{
-			x+=3;
-		}
-
-		if(x>=edge || x<=50)
+		if(x+30 > edge || x-30 <0)
 		{
-			y=y+50;
-			i++;
+			dx=-dx;
+			y+=50;
 		}
+		x+=dx;
 
-	}	
+	}		
 }
 
 animate();
