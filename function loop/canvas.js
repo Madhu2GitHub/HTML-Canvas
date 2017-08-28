@@ -1,3 +1,4 @@
+//Bouncing ball using function loop
 var canvas=document.querySelector('canvas');
 
 //set canvas width and height to fit window
@@ -16,34 +17,33 @@ var c=canvas.getContext('2d');
 //##################################
 //animate
 //creating loop
-var x=30;
-var y=50;
-var edge=window.innerWidth;
-var i=1;
-var dx=20;
+
+
+var width=window.innerWidth;
+var height=window.innerHeight;
+var x=Math.random()*width;
+var y=Math.random()*height;
+var dx=(Math.random()-0.5)*20;
+var dy=(Math.random()-0.5)*20;
 function animate()
 {
-	//to make circle move instead of drawing multiple circle on canvas use clearRect
-	//c.clearRect(0,0,window.innerWidth,window.innerHeight);
-	if(y>=window.innerHeight){
-		alert("done");
-	}
-	else
+	c.clearRect(0,0,width,height);
+	requestAnimationFrame(animate);
+	c.beginPath();
+	c.arc(x,y,30,0,Math.PI*2,false);
+	c.strokeStyle="green";
+	c.stroke();
+
+	if(x+30 > width || x-30 <0)
 	{
-		requestAnimationFrame(animate);
-		c.beginPath();
-		c.arc(x,y,30,0,Math.PI*2,false);
-		c.strokeStyle="green";
-		c.stroke();
-
-		if(x+30 > edge || x-30 <0)
-		{
-			dx=-dx;
-			y+=50;
-		}
-		x+=dx;
-
-	}		
+		dx=-dx;
+	}
+	if(y+30 > height || y-30 <0)
+	{
+		dy=-dy;
+	}
+	x+=dx;
+	y+=dy;
 }
 
 animate();
