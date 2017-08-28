@@ -33,6 +33,8 @@ function animate()
 	c.arc(x,y,30,0,Math.PI*2,false);
 	c.strokeStyle="green";
 	c.stroke();
+	c.fillStyle="green";
+	c.fill();
 
 	if(x+30 > width || x-30 <0)
 	{
